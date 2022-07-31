@@ -23,6 +23,7 @@ class BaseConfig:
     RESTX_JSON = {
         'ensure_ascii': False,
     }
+    ALGORITHM = 'HS256'
 
 
 class TestingConfig(BaseConfig):
@@ -38,11 +39,10 @@ class DevelopmentConfig(BaseConfig):
 
 class ProductionConfig(BaseConfig):
     DEBUG = False
-    # TODO: дополнить конфиг
 
 
 class ConfigFactory:
-    flask_env = os.getenv('FLASK_ENV')
+    flask_env = os.getenv('FLASK_ENV', 'development')
 
     @classmethod
     def get_config(cls) -> Type[BaseConfig]:
