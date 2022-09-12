@@ -2,6 +2,6 @@ version: "3.9"
 
 services:
   app:
-    image: ivanim/cw_4_1:version-1
+    image: ivanim/cw_4_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
       - 80:80
