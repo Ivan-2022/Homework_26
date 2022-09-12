@@ -11,7 +11,7 @@ jobs:
     - name: Git clone my repo
       uses: actions/checkout@v1
     - name: docker build
-      run: docker build -t ivanim/cw_4_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+      run: docker build -t ivanim/cw_4_1:version-1 .
       
   push:
     runs-on: ubuntu-latest
@@ -19,9 +19,9 @@ jobs:
     
     steps:
     - name: docker login
-      run:  echo ${{ secrets.DOCKER_TOKEN}}
+      run:  echo ${{ secrets.DOCKER_TOKEN}} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
     - name: docker push
-      run: docker push ivanim/cw_4_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+      run: docker push ivanim/cw_4_1:version-1
       
   deploy:
     runs-on: ubuntu-latest
