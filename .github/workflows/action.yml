@@ -19,7 +19,7 @@ jobs:
     
     steps:
     - name: docker login
-      run:  echo ${{ secrets.DOCKER_TOKEN}} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      run:  echo ${{ secrets.DOCKER_TOKEN}}
     - name: docker push
       run: docker push ivanim/cw_4_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID
       
