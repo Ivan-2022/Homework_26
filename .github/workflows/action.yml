@@ -11,7 +11,7 @@ jobs:
     - name: Git clone my repo
       uses: actions/checkout@v1
     - name: docker build
-      run: docker build -t ivanim/cw_4_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+      run: docker build -t ivanim/cw_4_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
       
   push:
     runs-on: ubuntu-latest
