@@ -9,7 +9,7 @@ jobs:
     
     steps:
     - name: Git clone my repo
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: docker build
       run: docker build -t ivanim/cw_4_1:version-1 .
       
@@ -20,8 +20,7 @@ jobs:
     steps:
     - name: docker login
       run:  echo ${{ secrets.DOCKER_TOKEN}} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-    - name: docker tag
-      run:  docker tag cw_4_1:version-1 ivanim/cw_4_1:version-1
+
     - name: docker push
       run: docker push ivanim/cw_4_1:version-1
       
@@ -31,7 +30,7 @@ jobs:
     
     steps:
     - name: Git clone my repo
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: copy file docker-compose-server.yaml to server
       uses: app/scp-action@master
       with:
