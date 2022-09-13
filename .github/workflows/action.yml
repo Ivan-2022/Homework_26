@@ -11,9 +11,8 @@ jobs:
     - name: Git clone my repo
       uses: actions/checkout@v2
     - name: docker build
-      run: docker build code .
-    - name: tags
-      run: docker tag code ${{ secrets.DOCKER_USERNAME }}/code:latest
+      run: docker build ${{ secrets.DOCKER_USERNAME }}:latest .
+
       
   push:
     runs-on: ubuntu-latest
