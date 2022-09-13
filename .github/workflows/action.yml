@@ -27,14 +27,20 @@ jobs:
     steps:
     - name: Git clone my repo
       uses: actions/checkout@v2
-    - name: copy file docker-compose-server.yaml to server
+    - name: create deploy/docker-compose.yaml
+      run: |
+          mkdir deploy
+          cat docker-compose-server.yaml | envsubst > deploy/docker-compose.yaml
+          
+    - name: copy file docker-compose.yaml to server
       uses: app/scp-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "docker-compose-server.yaml"
-        target: "flask_app_docker/docker-compose.yaml"
+        source: "deploy/docker-compose.yaml"
+        target: "flask_app_docker"
+        
     - name: deploy app
       uses: appleboy/ssh-action@master
       with:
