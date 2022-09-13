@@ -33,13 +33,14 @@ jobs:
           cat docker-compose-server.yaml | envsubst > deploy/docker-compose.yaml
           
     - name: copy file docker-compose.yaml to server
-      uses: app/scp-action@master
+      uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         source: "deploy/docker-compose.yaml"
         target: "flask_app_docker"
+        strip_components: 1
         
     - name: deploy app
       uses: appleboy/ssh-action@master
