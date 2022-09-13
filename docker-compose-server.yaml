@@ -2,6 +2,6 @@ version: "3.9"
 
 services:
   app:
-    image: ${{ secrets.DOCKER_USERNAME }}:latest
+    image: ${{ secrets.DOCKER_USERNAME }}/test:latest
     ports:
       - 80:80
