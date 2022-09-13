@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: node
-    
     steps:
     - name: Git clone my repo
       uses: actions/checkout@v2
