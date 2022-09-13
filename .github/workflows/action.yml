@@ -13,7 +13,7 @@ jobs:
     - name: docker build
       run: docker build code .
     - name: tags
-      run: docker tag code ${{ secrets.DOCKER_USERNAME }/code:latest
+      run: docker tag code ${{ secrets.DOCKER_USERNAME }}/code:latest
       
   push:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
       run:  docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
 
     - name: docker push
-      run: docker push ${{ secrets.DOCKER_USERNAME }/code:latest
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/code:latest
       
   deploy:
     runs-on: ubuntu-latest
