@@ -2,6 +2,6 @@ version: "3.9"
 
 services:
   app:
-    image: ivanim/cw_4_1:version-1
+    image: ${{ secrets.DOCKER_USERNAME }}:latest
     ports:
       - 80:80
