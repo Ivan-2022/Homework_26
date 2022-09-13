@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v2
   
     - name: docker build
-      run: docker build ${{ secrets.DOCKER_USERNAME }}:latest .
+      run: docker build ${{ secrets.DOCKER_USERNAME }}/test:latest .
 
       
   push:
@@ -24,7 +24,7 @@ jobs:
     - name: docker login
       run:  docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
     - name: docker push
-      run: docker push ${{ secrets.DOCKER_USERNAME }}:latest
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/test:latest
       
   deploy:
     runs-on: ubuntu-latest
