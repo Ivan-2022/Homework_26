@@ -2,6 +2,6 @@ version: "3.9"
 
 services:
   app:
-    image: ${{ secrets.DOCKER_USERNAME }}/code:${{ github.sha}}
+    image: ivanim/cw_4_1:vesion-1
     ports:
       - 80:80
